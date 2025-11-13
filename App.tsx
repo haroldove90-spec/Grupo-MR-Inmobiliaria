@@ -53,11 +53,15 @@ const App: React.FC = () => {
   };
 
   const handleSaveProperty = (propertyData: Omit<Property, 'id'> & { id?: number }) => {
+    let savedPropertyId: number;
     if (propertyData.id) {
+      savedPropertyId = propertyData.id;
       setProperties(prev => prev.map(p => p.id === propertyData.id ? { ...p, ...propertyData } as Property : p));
     } else {
-      setProperties(prev => [...prev, { ...propertyData, id: Date.now() } as Property]);
+      savedPropertyId = Date.now();
+      setProperties(prev => [...prev, { ...propertyData, id: savedPropertyId } as Property]);
     }
+    return savedPropertyId;
   };
 
   const handleDeleteProperty = (id: number) => {
@@ -88,7 +92,7 @@ const App: React.FC = () => {
       case 'propertyDetail': {
         const property = properties.find(p => p.id === selectedPropertyId);
         if (property) {
-          return <PropertyDetail property={property} onBack={() => navigateTo('properties')} />;
+          return <PropertyDetail property={property} onBack={() => navigateTo(isAdmin ? 'admin' : 'properties')} />;
         }
         return <Properties properties={properties} onSelectProperty={handleSelectProperty} />; // Fallback
       }
@@ -99,6 +103,7 @@ const App: React.FC = () => {
                     onSave={handleSaveProperty} 
                     onDelete={handleDeleteProperty}
                     onExitAdmin={handleToggleAdmin}
+                    onSelectProperty={handleSelectProperty}
                  />;
         }
         return <Hero onNavigate={navigateTo} />; // Fallback if not admin

@@ -1,12 +1,13 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Property } from '../types';
 import { PropertyForm } from './PropertyForm';
 
 interface AdminDashboardProps {
     properties: Property[];
-    onSave: (propertyData: Omit<Property, 'id'> & { id?: number }) => void;
+    onSave: (propertyData: Omit<Property, 'id'> & { id?: number }) => number | void;
     onDelete: (id: number) => void;
     onExitAdmin: () => void;
+    onSelectProperty: (id: number) => void;
 }
 
 const StatCard: React.FC<{ title: string; value: string; icon: React.ReactNode }> = ({ title, value, icon }) => (
@@ -30,9 +31,21 @@ const formatCurrency = (value: number) => {
     }).format(value);
 };
 
-export const AdminDashboard: React.FC<AdminDashboardProps> = ({ properties, onSave, onDelete, onExitAdmin }) => {
+export const AdminDashboard: React.FC<AdminDashboardProps> = ({ properties, onSave, onDelete, onExitAdmin, onSelectProperty }) => {
     const [isFormOpen, setIsFormOpen] = useState(false);
     const [editingProperty, setEditingProperty] = useState<Property | null>(null);
+    const [showToast, setShowToast] = useState(false);
+    const [lastSavedPropertyId, setLastSavedPropertyId] = useState<number | null>(null);
+
+    useEffect(() => {
+        if (showToast) {
+            const timer = setTimeout(() => {
+                setShowToast(false);
+                setLastSavedPropertyId(null);
+            }, 5000);
+            return () => clearTimeout(timer);
+        }
+    }, [showToast]);
 
     const stats = useMemo(() => {
         const totalValue = properties.reduce((sum, p) => sum + p.price, 0);
@@ -60,13 +73,22 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ properties, onSa
     };
     
     const handleSaveForm = (propertyData: Omit<Property, 'id'> & { id?: number }) => {
-        onSave(propertyData);
+        const savedId = onSave(propertyData);
+        if (typeof savedId === 'number') {
+            setLastSavedPropertyId(savedId);
+        }
         handleCloseForm();
+        setShowToast(true);
     };
+    
+    const handleViewLive = () => {
+        if(lastSavedPropertyId) {
+            onSelectProperty(lastSavedPropertyId);
+        }
+    }
 
     return (
         <section className="bg-gray-100 text-gray-800 min-h-screen">
-            {/* The py-24 etc padding is removed to allow the header to be at the top */}
             <div className="container mx-auto px-6 py-12 md:py-16">
                 
                 <div className="bg-brand-dark rounded-lg shadow-xl p-6 md:p-8 mb-12 flex justify-between items-center">
@@ -104,7 +126,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ properties, onSa
                 {/* Properties List */}
                 <div className="bg-white rounded-lg shadow-lg p-6 border border-gray-200">
                     <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
-                        <h3 className="text-2xl font-bold text-gray-900 mb-4 sm:mb-0">Mis Propiedades</h3>
+                        <h3 className="text-3xl font-bold text-gray-900 mb-4 sm:mb-0">Mis Propiedades</h3>
                         <button
                             onClick={handleAddNew}
                             className="w-full sm:w-auto bg-brand-orange text-white font-bold py-2 px-5 uppercase tracking-wider rounded-md hover:bg-orange-600 transition-colors duration-300 flex items-center justify-center gap-2"
@@ -118,19 +140,15 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ properties, onSa
                         <div className="min-w-full">
                             {/* Header */}
                             <div className="hidden md:grid grid-cols-12 gap-4 text-left text-sm font-semibold text-gray-500 uppercase tracking-wider p-4 border-b border-gray-200">
-                                <div className="col-span-1"></div>
                                 <div className="col-span-4">Título</div>
                                 <div className="col-span-3">Ubicación</div>
                                 <div className="col-span-2">Precio</div>
-                                <div className="col-span-2 text-right">Acciones</div>
+                                <div className="col-span-3 text-right">Acciones</div>
                             </div>
                             {/* Body */}
                             <div>
                                 {properties.map(prop => (
                                     <div key={prop.id} className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center p-4 border-b border-gray-200 hover:bg-gray-50 transition-colors duration-200">
-                                        <div className="md:col-span-1 col-span-full">
-                                            <img src={prop.imageUrl} alt={prop.title} className="w-full h-24 md:w-24 md:h-16 object-cover rounded-md"/>
-                                        </div>
                                         <div className="md:col-span-4 col-span-full font-semibold text-gray-900">{prop.title}</div>
                                         <div className="md:col-span-3 col-span-full text-gray-600">
                                             <span className="md:hidden text-xs font-bold text-gray-400 uppercase">Ubicación: </span> {prop.location}
@@ -138,7 +156,11 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ properties, onSa
                                         <div className="md:col-span-2 col-span-full text-brand-orange font-bold">
                                              <span className="md:hidden text-xs font-bold text-gray-400 uppercase">Precio: </span> {formatCurrency(prop.price)}
                                         </div>
-                                        <div className="md:col-span-2 col-span-full flex md:justify-end gap-4 mt-2 md:mt-0">
+                                        <div className="md:col-span-3 col-span-full flex md:justify-end gap-2 md:gap-4 mt-2 md:mt-0">
+                                            <button onClick={() => onSelectProperty(prop.id)} className="flex items-center gap-1 text-green-600 hover:text-green-800 font-semibold text-sm">
+                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                                                Ver
+                                            </button>
                                             <button onClick={() => handleEdit(prop)} className="flex items-center gap-1 text-blue-500 hover:text-blue-700 font-semibold text-sm">
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L16.732 3.732z" /></svg>
                                                 Editar
@@ -160,10 +182,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ properties, onSa
             {/* Form Modal */}
             {isFormOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-                    {/* Overlay */}
                     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm" onClick={handleCloseForm}></div>
-                    
-                    {/* Modal Content */}
                     <div className="relative z-10 w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white rounded-lg shadow-xl">
                          <PropertyForm 
                             onSubmit={handleSaveForm} 
@@ -171,6 +190,29 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ properties, onSa
                             initialData={editingProperty} 
                         />
                     </div>
+                </div>
+            )}
+
+            {/* Success Toast */}
+            {showToast && (
+                 <div className="fixed bottom-8 right-8 z-50 bg-white shadow-2xl rounded-lg p-4 flex items-center gap-4 border-l-4 border-green-500 animate-slide-in">
+                    <div className="text-green-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p className="font-bold text-gray-800">¡Éxito!</p>
+                        <p className="text-sm text-gray-600">Propiedad guardada correctamente.</p>
+                    </div>
+                     {lastSavedPropertyId && (
+                        <button onClick={handleViewLive} className="ml-4 text-sm font-semibold text-blue-600 hover:underline">Ver en vivo</button>
+                    )}
+                    <button onClick={() => setShowToast(false)} className="text-gray-400 hover:text-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
                 </div>
             )}
         </section>
