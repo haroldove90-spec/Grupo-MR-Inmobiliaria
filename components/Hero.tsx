@@ -34,7 +34,7 @@ const ContactForm: React.FC = () => {
 export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   return (
     <section 
-      className="relative h-screen min-h-[700px] flex items-center text-white"
+      className="relative min-h-screen min-h-[700px] flex items-center text-white"
     >
       <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
       <img 
@@ -42,8 +42,8 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         alt="Fachada de casa moderna de dos pisos"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="relative z-20 container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12 md:gap-16">
-        <div className="md:w-1/2 text-center md:text-left pt-36 md:pt-0">
+      <div className="relative z-20 container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12 md:gap-16 pt-28 pb-12 md:py-0">
+        <div className="md:w-1/2 text-center md:text-left">
             <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
               Tu hogar ideal te espera con Grupo MR Inmobiliaria
             </h1>
