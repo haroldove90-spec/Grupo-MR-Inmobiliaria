@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 const FormInput: React.FC<{
@@ -16,7 +15,7 @@ const FormInput: React.FC<{
             name={id}
             placeholder={placeholder}
             required={required}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-brand-orange focus:border-brand-orange transition"
+            className="w-full px-4 py-2 bg-gray-100 text-black placeholder-gray-500 border border-gray-300 rounded-md shadow-sm focus:ring-brand-orange focus:border-brand-orange transition"
         />
     </div>
 );
@@ -57,7 +56,7 @@ export const Contact: React.FC = () => {
                                 rows={5}
                                 placeholder="¿En qué podemos ayudarle?"
                                 required
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-brand-orange focus:border-brand-orange transition"
+                                className="w-full px-4 py-2 bg-gray-100 text-black placeholder-gray-500 border border-gray-300 rounded-md shadow-sm focus:ring-brand-orange focus:border-brand-orange transition"
                             ></textarea>
                         </div>
                         <button

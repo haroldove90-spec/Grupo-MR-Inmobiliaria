@@ -18,11 +18,11 @@ const ContactForm: React.FC = () => {
             <p className="text-gray-300 mb-6">Tell us how we can guide you.</p>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <input type="text" placeholder="Your name" required className="bg-input-bg text-white placeholder-gray-400 p-3 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-brand-orange" />
-                    <input type="text" placeholder="Your number" required className="bg-input-bg text-white placeholder-gray-400 p-3 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-brand-orange" />
+                    <input type="text" placeholder="Your name" required className="bg-gray-100 text-black placeholder-gray-500 p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-orange" />
+                    <input type="text" placeholder="Your number" required className="bg-gray-100 text-black placeholder-gray-500 p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-orange" />
                 </div>
-                <input type="email" placeholder="Your email" required className="w-full bg-input-bg text-white placeholder-gray-400 p-3 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-brand-orange" />
-                <textarea placeholder="Type your message..." rows={4} required className="w-full bg-input-bg text-white placeholder-gray-400 p-3 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-brand-orange"></textarea>
+                <input type="email" placeholder="Your email" required className="w-full bg-gray-100 text-black placeholder-gray-500 p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-orange" />
+                <textarea placeholder="Type your message..." rows={4} required className="w-full bg-gray-100 text-black placeholder-gray-500 p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-orange"></textarea>
                 <button type="submit" className="w-full bg-brand-orange text-white font-bold py-3 px-6 text-center uppercase tracking-wider rounded-md hover:bg-orange-600 transition-colors duration-300">
                     Send Message
                 </button>

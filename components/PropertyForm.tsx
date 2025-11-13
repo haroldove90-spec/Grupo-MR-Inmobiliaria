@@ -19,6 +19,20 @@ const formInitialState: Omit<Property, 'id'> = {
     gallery: [],
 };
 
+const FormInput: React.FC<React.InputHTMLAttributes<HTMLInputElement> & { label: string }> = ({ label, ...props }) => (
+    <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
+        <input {...props} className="w-full p-3 bg-gray-100 text-black placeholder-gray-500 border border-gray-300 rounded-md focus:ring-brand-orange focus:border-brand-orange transition" />
+    </div>
+);
+
+const FormTextarea: React.FC<React.TextareaHTMLAttributes<HTMLTextAreaElement> & { label: string }> = ({ label, ...props }) => (
+    <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
+        <textarea {...props} className="w-full p-3 bg-gray-100 text-black placeholder-gray-500 border border-gray-300 rounded-md focus:ring-brand-orange focus:border-brand-orange transition" />
+    </div>
+);
+
 export const PropertyForm: React.FC<PropertyFormProps> = ({ onSubmit, onCancel, initialData }) => {
     const [formData, setFormData] = useState(formInitialState);
     const [galleryStr, setGalleryStr] = useState('');
@@ -49,32 +63,31 @@ export const PropertyForm: React.FC<PropertyFormProps> = ({ onSubmit, onCancel, 
     };
 
     return (
-        <div className="bg-white p-8 rounded-lg shadow-lg mb-12">
-            <h3 className="text-2xl font-bold mb-6">{initialData ? 'Editar Propiedad' : 'Añadir Nueva Propiedad'}</h3>
-            <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input name="title" value={formData.title} onChange={handleChange} placeholder="Título" required className="w-full p-3 border rounded-md" />
-                    <input name="location" value={formData.location} onChange={handleChange} placeholder="Ubicación" required className="w-full p-3 border rounded-md" />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <input name="price" type="number" value={formData.price} onChange={handleChange} placeholder="Precio" required className="w-full p-3 border rounded-md" />
-                    <input name="bedrooms" type="number" value={formData.bedrooms} onChange={handleChange} placeholder="Habitaciones" required className="w-full p-3 border rounded-md" />
-                    <input name="bathrooms" type="number" value={formData.bathrooms} onChange={handleChange} placeholder="Baños" required className="w-full p-3 border rounded-md" />
-                    <input name="area" type="number" value={formData.area} onChange={handleChange} placeholder="Área (m²)" required className="w-full p-3 border rounded-md" />
-                </div>
-                <input name="imageUrl" value={formData.imageUrl} onChange={handleChange} placeholder="URL de la imagen principal" required className="w-full p-3 border rounded-md" />
-                <textarea name="description" value={formData.description} onChange={handleChange} placeholder="Descripción" rows={4} required className="w-full p-3 border rounded-md" />
-                <textarea value={galleryStr} onChange={handleGalleryChange} placeholder="Galería de imágenes (URLs separadas por comas)" rows={3} className="w-full p-3 border rounded-md" />
-                
-                <div className="flex justify-end gap-4 pt-4">
-                    <button type="button" onClick={onCancel} className="bg-gray-300 text-gray-800 font-bold py-2 px-6 rounded-md hover:bg-gray-400 transition-colors">
-                        Cancelar
-                    </button>
-                    <button type="submit" className="bg-brand-orange text-white font-bold py-2 px-6 rounded-md hover:bg-orange-600 transition-colors">
-                        Guardar
-                    </button>
-                </div>
-            </form>
-        </div>
+        <form onSubmit={handleSubmit} className="p-8 space-y-6">
+            <h3 className="text-2xl font-bold text-gray-900">{initialData ? 'Editar Propiedad' : 'Añadir Nueva Propiedad'}</h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <FormInput label="Título" name="title" value={formData.title} onChange={handleChange} placeholder="Título de la propiedad" required />
+                <FormInput label="Ubicación" name="location" value={formData.location} onChange={handleChange} placeholder="Ciudad, Estado" required />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <FormInput label="Precio (MXN)" name="price" type="number" value={formData.price} onChange={handleChange} placeholder="e.g., 2500000" required />
+                <FormInput label="Habitaciones" name="bedrooms" type="number" value={formData.bedrooms} onChange={handleChange} placeholder="e.g., 3" required />
+                <FormInput label="Baños" name="bathrooms" type="number" value={formData.bathrooms} onChange={handleChange} placeholder="e.g., 2" required />
+                <FormInput label="Área (m²)" name="area" type="number" value={formData.area} onChange={handleChange} placeholder="e.g., 150" required />
+            </div>
+            <FormInput label="URL de la Imagen Principal" name="imageUrl" value={formData.imageUrl} onChange={handleChange} placeholder="https://example.com/imagen.jpg" required />
+            <FormTextarea label="Descripción" name="description" value={formData.description} onChange={handleChange} placeholder="Describa la propiedad..." rows={4} required />
+            <FormTextarea label="Galería de Imágenes" value={galleryStr} onChange={handleGalleryChange} placeholder="URLs separadas por comas: https://.../1.jpg, https://.../2.jpg" rows={3} />
+            
+            <div className="flex justify-end gap-4 pt-4 border-t mt-6">
+                <button type="button" onClick={onCancel} className="bg-gray-200 text-gray-800 font-bold py-2 px-6 rounded-md hover:bg-gray-300 transition-colors">
+                    Cancelar
+                </button>
+                <button type="submit" className="bg-brand-orange text-white font-bold py-2 px-6 rounded-md hover:bg-orange-600 transition-colors">
+                    Guardar Cambios
+                </button>
+            </div>
+        </form>
     );
 };

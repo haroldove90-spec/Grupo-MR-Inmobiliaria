@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Property } from '../types';
 
@@ -85,9 +84,9 @@ export const PropertyDetail: React.FC<{ property: Property, onBack: () => void }
                                 </div>
                            ) : (
                                 <form onSubmit={handleSubmit} className="space-y-4">
-                                    <input type="text" placeholder="Su nombre" required className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-brand-orange focus:border-brand-orange transition" />
-                                    <input type="email" placeholder="Su email" required className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-brand-orange focus:border-brand-orange transition" />
-                                    <textarea rows={4} defaultValue={`Hola, estoy interesado/a en la propiedad "${property.title}" (${property.location}). Me gustaría recibir más información. Gracias.`} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-brand-orange focus:border-brand-orange transition"></textarea>
+                                    <input type="text" placeholder="Su nombre" required className="w-full px-4 py-2 bg-gray-100 text-black placeholder-gray-500 border border-gray-300 rounded-md focus:ring-brand-orange focus:border-brand-orange transition" />
+                                    <input type="email" placeholder="Su email" required className="w-full px-4 py-2 bg-gray-100 text-black placeholder-gray-500 border border-gray-300 rounded-md focus:ring-brand-orange focus:border-brand-orange transition" />
+                                    <textarea rows={4} defaultValue={`Hola, estoy interesado/a en la propiedad "${property.title}" (${property.location}). Me gustaría recibir más información. Gracias.`} className="w-full px-4 py-2 bg-gray-100 text-black placeholder-gray-500 border border-gray-300 rounded-md focus:ring-brand-orange focus:border-brand-orange transition"></textarea>
                                     <button type="submit" className="w-full bg-brand-orange text-white font-bold py-3 px-6 text-center uppercase tracking-wider rounded-md hover:bg-orange-600 transition-colors duration-300">
                                         Enviar Consulta
                                     </button>
