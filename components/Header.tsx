@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Section } from '../types';
 
@@ -54,8 +55,11 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, onNavigate, isAdm
     { section: 'contact', label: 'Contacto' },
   ];
 
+  const isAlwaysOpaque = ['about', 'properties', 'contact', 'propertyDetail'].includes(activeSection);
+  const headerBgClass = isAlwaysOpaque || isScrolled || isMenuOpen ? 'bg-brand-dark shadow-lg' : 'bg-transparent';
+
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 text-white transition-colors duration-300 ${isScrolled || isMenuOpen ? 'bg-brand-dark shadow-lg' : 'bg-transparent'}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 text-white transition-colors duration-300 ${headerBgClass}`}>
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <img 
           src="https://appdesignmex.com/grupomrinmobiliario.png"

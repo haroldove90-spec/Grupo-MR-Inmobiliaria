@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const TeamMember: React.FC<{ name: string; title: string; imageUrl: string }> = ({ name, title, imageUrl }) => (
@@ -11,7 +10,7 @@ const TeamMember: React.FC<{ name: string; title: string; imageUrl: string }> = 
 
 export const About: React.FC = () => {
   return (
-    <section className="py-16 md:py-24 bg-white text-gray-800">
+    <section className="pt-24 pb-16 md:pt-32 md:pb-24 bg-white text-gray-800">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-brand-dark">Sobre <span className="text-brand-orange">Grupo MR Inmobiliaria</span></h2>

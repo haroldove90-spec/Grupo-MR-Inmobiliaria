@@ -27,7 +27,7 @@ export const PropertyDetail: React.FC<{ property: Property, onBack: () => void }
     };
 
     return (
-        <section className="py-16 md:py-24 bg-white text-gray-800">
+        <section className="pt-24 pb-16 md:pt-32 md:pb-24 bg-white text-gray-800">
             <div className="container mx-auto px-6">
                 <button 
                     onClick={onBack} 

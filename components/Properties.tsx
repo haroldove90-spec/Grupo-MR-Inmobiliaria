@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { PropertyCard } from './PropertyCard';
 import { Property } from '../types';
@@ -10,7 +9,7 @@ interface PropertiesProps {
 
 export const Properties: React.FC<PropertiesProps> = ({ properties, onSelectProperty }) => {
   return (
-    <section className="py-16 md:py-24 bg-brand-light">
+    <section className="pt-24 pb-16 md:pt-32 md:pb-24 bg-brand-light">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-brand-dark">Propiedades <span className="text-brand-orange">Destacadas</span></h2>
