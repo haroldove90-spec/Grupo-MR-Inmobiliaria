@@ -1,0 +1,148 @@
+import { Property } from './types';
+
+export const mockProperties: Property[] = [
+  { 
+    id: 1, 
+    title: 'Villa Moderna con Vista al Mar', 
+    location: 'Marbella, España', 
+    price: 4500000, 
+    bedrooms: 5, 
+    bathrooms: 6, 
+    area: 650, 
+    imageUrl: 'https://picsum.photos/400/300?random=2',
+    description: 'Una impresionante villa de diseño contemporáneo con vistas panorámicas al mar Mediterráneo. Esta propiedad cuenta con una piscina infinita, amplias terrazas y acabados de lujo en todas sus estancias. Ideal para quienes buscan un estilo de vida exclusivo y sofisticado.',
+    gallery: [
+      'https://picsum.photos/800/600?random=21',
+      'https://picsum.photos/800/600?random=22',
+      'https://picsum.photos/800/600?random=23',
+      'https://picsum.photos/800/600?random=24',
+      'https://picsum.photos/800/600?random=25',
+    ]
+  },
+  { 
+    id: 2, 
+    title: 'Penthouse de Lujo en la Ciudad', 
+    location: 'Miami, USA', 
+    price: 7200000, 
+    bedrooms: 4, 
+    bathrooms: 5, 
+    area: 480, 
+    imageUrl: 'https://picsum.photos/400/300?random=3',
+    description: 'Este exclusivo penthouse ofrece vistas de 360 grados del skyline de Miami y la bahía. Con un diseño de interiores de clase mundial, acceso privado por ascensor y una terraza en la azotea con jacuzzi, representa la cúspide de la vida urbana de lujo.',
+    gallery: [
+      'https://picsum.photos/800/600?random=31',
+      'https://picsum.photos/800/600?random=32',
+      'https://picsum.photos/800/600?random=33',
+      'https://picsum.photos/800/600?random=34',
+      'https://picsum.photos/800/600?random=35',
+    ]
+  },
+  { 
+    id: 3, 
+    title: 'Hacienda Clásica Restaurada', 
+    location: 'Toscana, Italia', 
+    price: 3800000, 
+    bedrooms: 7, 
+    bathrooms: 7, 
+    area: 800, 
+    imageUrl: 'https://picsum.photos/400/300?random=4',
+    description: 'Sumérjase en el encanto de la Toscana con esta hacienda de piedra meticulosamente restaurada. Rodeada de olivares y viñedos, la propiedad combina el encanto rústico con comodidades modernas, incluyendo una bodega y una gran piscina al aire libre.',
+    gallery: [
+      'https://picsum.photos/800/600?random=41',
+      'https://picsum.photos/800/600?random=42',
+      'https://picsum.photos/800/600?random=43',
+      'https://picsum.photos/800/600?random=44',
+      'https://picsum.photos/800/600?random=45',
+    ]
+  },
+  { 
+    id: 4, 
+    title: 'Retiro en la Montaña', 
+    location: 'Aspen, USA', 
+    price: 9500000, 
+    bedrooms: 6, 
+    bathrooms: 8, 
+    area: 950, 
+    imageUrl: 'https://picsum.photos/400/300?random=5',
+    description: 'Un refugio de montaña espectacular con acceso directo a las pistas de esquí. Esta casa de madera y piedra cuenta con techos abovedados, múltiples chimeneas, un cine en casa y un spa privado. La escapada perfecta para los amantes de la naturaleza y los deportes de invierno.',
+    gallery: [
+      'https://picsum.photos/800/600?random=51',
+      'https://picsum.photos/800/600?random=52',
+      'https://picsum.photos/800/600?random=53',
+      'https://picsum.photos/800/600?random=54',
+      'https://picsum.photos/800/600?random=55',
+    ]
+  },
+  { 
+    id: 5, 
+    title: 'Loft Industrial Chic', 
+    location: 'Nueva York, USA', 
+    price: 2850000, 
+    bedrooms: 2, 
+    bathrooms: 3, 
+    area: 220, 
+    imageUrl: 'https://picsum.photos/400/300?random=6',
+    description: 'Elegante loft en el corazón de SoHo, con techos altos, paredes de ladrillo visto y enormes ventanales que inundan el espacio de luz natural. El diseño de planta abierta y la cocina de chef lo hacen ideal para el entretenimiento.',
+    gallery: [
+      'https://picsum.photos/800/600?random=61',
+      'https://picsum.photos/800/600?random=62',
+      'https://picsum.photos/800/600?random=63',
+      'https://picsum.photos/800/600?random=64',
+      'https://picsum.photos/800/600?random=65',
+    ]
+  },
+  { 
+    id: 6, 
+    title: 'Finca Rústica con Viñedos', 
+    location: 'Mendoza, Argentina', 
+    price: 1950000, 
+    bedrooms: 4, 
+    bathrooms: 4, 
+    area: 550, 
+    imageUrl: 'https://picsum.photos/400/300?random=7',
+    description: 'Viva el sueño del enólogo en esta encantadora finca rodeada de sus propios viñedos de Malbec. La casa principal combina un estilo rústico con toques modernos y ofrece una vista inigualable de la cordillera de los Andes.',
+    gallery: [
+      'https://picsum.photos/800/600?random=71',
+      'https://picsum.photos/800/600?random=72',
+      'https://picsum.photos/800/600?random=73',
+      'https://picsum.photos/800/600?random=74',
+      'https://picsum.photos/800/600?random=75',
+    ]
+  },
+  { 
+    id: 7, 
+    title: 'Apartamento Frente a la Playa', 
+    location: 'Cancún, México', 
+    price: 1500000, 
+    bedrooms: 3, 
+    bathrooms: 3, 
+    area: 280, 
+    imageUrl: 'https://picsum.photos/400/300?random=8',
+    description: 'Despierte con el sonido de las olas en este lujoso apartamento en primera línea de playa. Con acceso directo a la arena blanca y aguas turquesas, una piscina comunitaria estilo resort y amplios balcones para disfrutar de la brisa marina.',
+    gallery: [
+        'https://picsum.photos/800/600?random=81',
+        'https://picsum.photos/800/600?random=82',
+        'https://picsum.photos/800/600?random=83',
+        'https://picsum.photos/800/600?random=84',
+        'https://picsum.photos/800/600?random=85',
+    ]
+  },
+  { 
+    id: 8, 
+    title: 'Casa de Diseño Minimalista', 
+    location: 'Kioto, Japón', 
+    price: 5100000, 
+    bedrooms: 4, 
+    bathrooms: 4, 
+    area: 400, 
+    imageUrl: 'https://picsum.photos/400/300?random=9',
+    description: 'Una obra maestra de la arquitectura minimalista que integra a la perfección los espacios interiores y exteriores. La casa se organiza en torno a un jardín zen privado, creando un oasis de calma y serenidad en la histórica ciudad de Kioto.',
+    gallery: [
+        'https://picsum.photos/800/600?random=91',
+        'https://picsum.photos/800/600?random=92',
+        'https://picsum.photos/800/600?random=93',
+        'https://picsum.photos/800/600?random=94',
+        'https://picsum.photos/800/600?random=95',
+    ]
+  },
+];
