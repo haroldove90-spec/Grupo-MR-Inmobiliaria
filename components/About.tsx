@@ -33,7 +33,7 @@ export const About: React.FC = () => {
             <h2 className="text-3xl font-bold text-center mb-12">Conozca a Nuestro Equipo</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <TeamMember name="Alejandro Vargas" title="Fundador y CEO" imageUrl="https://www.siia.net/wp-content/uploads/2024/03/Carlos-Lujan-1024x1024.png" />
-                <TeamMember name="Isabella Montoya" title="Directora de Ventas" imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANdGcRWVMvxRvJKG2psKQxf5ZgZ48IqvF_uYzcf4Q&s" />
+                <TeamMember name="Isabella Montoya" title="Directora de Ventas" imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5bmmi926zqkF1Q1OMsar-6bUYtb5sSo6MKA&s" />
                 <TeamMember name="Mateo Rojas" title="Especialista en Propiedades" imageUrl="https://m.media-amazon.com/images/I/61kdJZI+2kL._SY450_CR0%2C0%2C450%2C450_.jpg" />
                 <TeamMember name="Sofia Castillo" title="Gerente de Marketing" imageUrl="https://www.vitalvoices.org/wp-content/uploads/2023/08/Maria-Sofia-Castillo_pic-1.png" />
             </div>
