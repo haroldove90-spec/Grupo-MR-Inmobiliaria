@@ -6,6 +6,7 @@ interface AdminDashboardProps {
     properties: Property[];
     onSave: (propertyData: Omit<Property, 'id'> & { id?: number }) => void;
     onDelete: (id: number) => void;
+    onExitAdmin: () => void;
 }
 
 const StatCard: React.FC<{ title: string; value: string; icon: React.ReactNode }> = ({ title, value, icon }) => (
@@ -29,7 +30,7 @@ const formatCurrency = (value: number) => {
     }).format(value);
 };
 
-export const AdminDashboard: React.FC<AdminDashboardProps> = ({ properties, onSave, onDelete }) => {
+export const AdminDashboard: React.FC<AdminDashboardProps> = ({ properties, onSave, onDelete, onExitAdmin }) => {
     const [isFormOpen, setIsFormOpen] = useState(false);
     const [editingProperty, setEditingProperty] = useState<Property | null>(null);
 
@@ -64,11 +65,21 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ properties, onSa
     };
 
     return (
-        <section className="py-24 md:py-32 bg-gray-100 text-gray-800 min-h-screen">
-            <div className="container mx-auto px-6">
+        <section className="bg-gray-100 text-gray-800 min-h-screen">
+            {/* The py-24 etc padding is removed to allow the header to be at the top */}
+            <div className="container mx-auto px-6 py-12 md:py-16">
                 
-                <div className="bg-brand-dark rounded-lg shadow-xl p-8 mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white">Dashboard</h2>
+                <div className="bg-brand-dark rounded-lg shadow-xl p-6 md:p-8 mb-12 flex justify-between items-center">
+                    <h2 className="text-2xl md:text-4xl font-bold text-white">Dashboard</h2>
+                    <button
+                        onClick={onExitAdmin}
+                        className="bg-transparent border border-white/50 text-white font-bold py-2 px-4 rounded-md hover:bg-white/10 transition-colors duration-300 flex items-center gap-2 text-sm"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                           <path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clipRule="evenodd" />
+                        </svg>
+                        <span className="hidden sm:inline">Volver al Sitio</span>
+                    </button>
                 </div>
 
                 {/* Stats Cards */}

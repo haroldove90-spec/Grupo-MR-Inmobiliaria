@@ -84,7 +84,12 @@ const App: React.FC = () => {
       }
       case 'admin': {
         if (isAdmin) {
-          return <AdminDashboard properties={properties} onSave={handleSaveProperty} onDelete={handleDeleteProperty} />;
+          return <AdminDashboard 
+                    properties={properties} 
+                    onSave={handleSaveProperty} 
+                    onDelete={handleDeleteProperty}
+                    onExitAdmin={handleToggleAdmin}
+                 />;
         }
         return <Hero onNavigate={navigateTo} />; // Fallback if not admin
       }
@@ -95,16 +100,18 @@ const App: React.FC = () => {
 
   return (
     <div className="font-sans bg-brand-dark text-brand-light">
-      <Header 
-        activeSection={activeSection} 
-        onNavigate={navigateTo} 
-        isAdmin={isAdmin} 
-        onToggleAdmin={handleToggleAdmin}
-      />
+      {activeSection !== 'admin' && (
+        <Header 
+          activeSection={activeSection} 
+          onNavigate={navigateTo} 
+          isAdmin={isAdmin} 
+          onToggleAdmin={handleToggleAdmin}
+        />
+      )}
       <main>
         {renderSection()}
       </main>
-      {activeSection !== 'home' && <Footer onNavigate={navigateTo} />}
+      {activeSection !== 'home' && activeSection !== 'admin' && <Footer onNavigate={navigateTo} />}
     </div>
   );
 };
