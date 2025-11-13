@@ -12,6 +12,7 @@ export const ExclusiveProperties: React.FC<ExclusivePropertiesProps> = ({ proper
     const sliderRef = useRef<HTMLDivElement>(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
     const [canScrollRight, setCanScrollRight] = useState(true);
+    const [isHovering, setIsHovering] = useState(false);
 
     const exclusiveProperties = properties.slice(0, 8); // Show up to 8 exclusive properties
 
@@ -37,6 +38,28 @@ export const ExclusiveProperties: React.FC<ExclusivePropertiesProps> = ({ proper
         }
     }, [properties]);
 
+    // Autoplay effect
+    useEffect(() => {
+        if (isHovering) return;
+
+        const intervalId = setInterval(() => {
+            if (sliderRef.current) {
+                const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
+                
+                // If we are near the end, scroll back to the start
+                if (scrollLeft + clientWidth >= scrollWidth - 1) {
+                    sliderRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    // Otherwise, scroll right
+                    const scrollAmount = sliderRef.current.clientWidth * 0.8;
+                    sliderRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }
+            }
+        }, 3000); // Autoplay interval: 3 seconds
+
+        return () => clearInterval(intervalId);
+    }, [isHovering]);
+
     const scroll = (direction: 'left' | 'right') => {
         if (sliderRef.current) {
             const scrollAmount = sliderRef.current.clientWidth * 0.8; // Scroll by 80% of visible width
@@ -61,7 +84,11 @@ export const ExclusiveProperties: React.FC<ExclusivePropertiesProps> = ({ proper
           </p>
         </div>
 
-        <div className="relative">
+        <div 
+            className="relative"
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+        >
             <div 
                 ref={sliderRef}
                 className="flex gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-px-6"

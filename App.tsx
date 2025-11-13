@@ -10,6 +10,7 @@ import { AdminDashboard } from './components/AdminDashboard';
 import { Section, Property } from './types';
 import { mockProperties } from './data';
 import { ExclusiveProperties } from './components/ExclusiveProperties';
+import { MoveForward } from './components/MoveForward';
 
 
 const App: React.FC = () => {
@@ -81,6 +82,7 @@ const App: React.FC = () => {
               onSelectProperty={handleSelectProperty} 
               onNavigate={navigateTo} 
             />
+            <MoveForward />
           </>
         );
       case 'about':
