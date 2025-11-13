@@ -42,23 +42,23 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         alt="Fachada de casa moderna de dos pisos"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="relative z-20 container mx-auto px-6 flex flex-col lg:flex-row justify-between items-center gap-12 lg:gap-16">
-        <div className="lg:w-1/2 text-center lg:text-left pt-36 lg:pt-0">
+      <div className="relative z-20 container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12 md:gap-16">
+        <div className="md:w-1/2 text-center md:text-left pt-36 md:pt-0">
             <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
               Tu hogar ideal te espera con Grupo MR Inmobiliaria
             </h1>
-            <p className="text-lg md:text-xl max-w-lg mx-auto lg:mx-0 mb-8 text-gray-200">
+            <p className="text-lg md:text-xl max-w-lg mx-auto md:mx-0 mb-8 text-gray-200">
               Encuentra la propiedad perfecta en CDMX y Aguascalientes con asesoría profesional y atención personalizada.
             </p>
             <button 
               onClick={() => onNavigate('properties')}
-              className="group text-lg font-semibold uppercase tracking-widest flex items-center gap-4 mx-auto lg:mx-0"
+              className="group text-lg font-semibold uppercase tracking-widest flex items-center gap-4 mx-auto md:mx-0"
             >
               Explorar Propiedades
               <span className="block w-16 h-0.5 bg-white transition-all duration-300 group-hover:w-24"></span>
             </button>
         </div>
-        <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+        <div className="w-full md:w-1/2 flex justify-center md:justify-end">
             <ContactForm />
         </div>
       </div>

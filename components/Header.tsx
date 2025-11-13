@@ -64,24 +64,23 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, onNavigate, isAdm
           onClick={() => onNavigate('home')}
         />
         
-        <nav className="hidden md:flex items-center">
-          {navItems.map(item => (
-            <NavLink key={item.section} {...item} activeSection={activeSection} onNavigate={onNavigate} />
-          ))}
-          {isAdmin && <NavLink section="admin" label="Panel Admin" activeSection={activeSection} onNavigate={onNavigate} />}
-        </nav>
-
-        <div className="hidden md:flex items-center">
-            <button 
-              onClick={onToggleAdmin}
-              className="flex items-center gap-2 text-sm font-semibold p-2 px-4 rounded-full border border-white/50 hover:bg-white/10 transition-colors"
-              title={isAdmin ? 'Cerrar Sesión' : 'Iniciar Sesión como Administrador'}
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                </svg>
-                {isAdmin ? 'Salir' : 'Admin'}
-            </button>
+        <div className="hidden md:flex items-center gap-6">
+          <nav className="flex items-center">
+            {navItems.map(item => (
+              <NavLink key={item.section} {...item} activeSection={activeSection} onNavigate={onNavigate} />
+            ))}
+            {isAdmin && <NavLink section="admin" label="Panel Admin" activeSection={activeSection} onNavigate={onNavigate} />}
+          </nav>
+          <button 
+            onClick={onToggleAdmin}
+            className="flex items-center gap-2 text-sm font-semibold p-2 px-4 rounded-full border border-white/50 hover:bg-white/10 transition-colors"
+            title={isAdmin ? 'Cerrar Sesión' : 'Iniciar Sesión como Administrador'}
+          >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+              </svg>
+              {isAdmin ? 'Salir' : 'Admin'}
+          </button>
         </div>
 
         <div className="md:hidden flex items-center">
