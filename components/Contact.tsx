@@ -79,7 +79,7 @@ export const Contact: React.FC = () => {
                     </div>
                 </div>
                 <div>
-                     <img src="https://picsum.photos/600/400?random=15" alt="Map" className="rounded-lg shadow-lg w-full h-64 object-cover" />
+                     <img src="https://media.istockphoto.com/id/1497684257/es/foto/agente-de-bienes-ra%C3%ADces-explique-los-planos-de-la-casa-para-ver-los-planos-de-la-casa-y-los.jpg?s=612x612&w=0&k=20&c=jMSaeun9OaEoxlQSyZUS9mOkMbfHB48NnSaB3siNGf4=" alt="Map" className="rounded-lg shadow-lg w-full h-64 object-cover" />
                 </div>
             </div>
         </div>

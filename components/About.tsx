@@ -20,7 +20,7 @@ export const About: React.FC = () => {
         
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <img src="https://picsum.photos/800/600?random=10" alt="Office interior" className="rounded-lg shadow-2xl w-full" />
+            <img src="https://img.freepik.com/fotos-premium/promotor-bienes-raices-mediana-edad-reunion-ingenieros-construccion-mini-ciudad-modelo-construccion_482257-26511.jpg" alt="Office interior" className="rounded-lg shadow-2xl w-full" />
           </div>
           <div className="text-gray-700 space-y-4 text-justify">
             <h3 className="text-2xl font-bold text-brand-dark">Nuestra Misión</h3>
@@ -32,10 +32,10 @@ export const About: React.FC = () => {
         <div className="mt-20">
             <h2 className="text-3xl font-bold text-center mb-12">Conozca a Nuestro Equipo</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <TeamMember name="Alejandro Vargas" title="Fundador y CEO" imageUrl="https://picsum.photos/200/200?random=11" />
-                <TeamMember name="Isabella Montoya" title="Directora de Ventas" imageUrl="https://picsum.photos/200/200?random=12" />
-                <TeamMember name="Mateo Rojas" title="Especialista en Propiedades" imageUrl="https://picsum.photos/200/200?random=13" />
-                <TeamMember name="Sofia Castillo" title="Gerente de Marketing" imageUrl="https://picsum.photos/200/200?random=14" />
+                <TeamMember name="Alejandro Vargas" title="Fundador y CEO" imageUrl="https://www.siia.net/wp-content/uploads/2024/03/Carlos-Lujan-1024x1024.png" />
+                <TeamMember name="Isabella Montoya" title="Directora de Ventas" imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANdGcRWVMvxRvJKG2psKQxf5ZgZ48IqvF_uYzcf4Q&s" />
+                <TeamMember name="Mateo Rojas" title="Especialista en Propiedades" imageUrl="https://m.media-amazon.com/images/I/61kdJZI+2kL._SY450_CR0%2C0%2C450%2C450_.jpg" />
+                <TeamMember name="Sofia Castillo" title="Gerente de Marketing" imageUrl="https://www.vitalvoices.org/wp-content/uploads/2023/08/Maria-Sofia-Castillo_pic-1.png" />
             </div>
         </div>
       </div>
