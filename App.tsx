@@ -9,6 +9,7 @@ import { PropertyDetail } from './components/PropertyDetail';
 import { AdminDashboard } from './components/AdminDashboard';
 import { Section, Property } from './types';
 import { mockProperties } from './data';
+import { ExclusiveProperties } from './components/ExclusiveProperties';
 
 
 const App: React.FC = () => {
@@ -68,7 +69,16 @@ const App: React.FC = () => {
   const renderSection = () => {
     switch (activeSection) {
       case 'home':
-        return <Hero onNavigate={navigateTo} />;
+        return (
+          <>
+            <Hero onNavigate={navigateTo} />
+            <ExclusiveProperties 
+              properties={properties} 
+              onSelectProperty={handleSelectProperty} 
+              onNavigate={navigateTo} 
+            />
+          </>
+        );
       case 'about':
         return <About />;
       case 'properties':
@@ -111,7 +121,7 @@ const App: React.FC = () => {
       <main>
         {renderSection()}
       </main>
-      {activeSection !== 'home' && activeSection !== 'admin' && <Footer onNavigate={navigateTo} />}
+      {activeSection !== 'admin' && <Footer onNavigate={navigateTo} />}
     </div>
   );
 };

@@ -132,8 +132,12 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ properties, onSa
                                             <img src={prop.imageUrl} alt={prop.title} className="w-full h-24 md:w-24 md:h-16 object-cover rounded-md"/>
                                         </div>
                                         <div className="md:col-span-4 col-span-full font-semibold text-gray-900">{prop.title}</div>
-                                        <div className="md:col-span-3 col-span-full text-gray-600">{prop.location}</div>
-                                        <div className="md:col-span-2 col-span-full text-brand-orange font-bold">{formatCurrency(prop.price)}</div>
+                                        <div className="md:col-span-3 col-span-full text-gray-600">
+                                            <span className="md:hidden text-xs font-bold text-gray-400 uppercase">Ubicación: </span> {prop.location}
+                                        </div>
+                                        <div className="md:col-span-2 col-span-full text-brand-orange font-bold">
+                                             <span className="md:hidden text-xs font-bold text-gray-400 uppercase">Precio: </span> {formatCurrency(prop.price)}
+                                        </div>
                                         <div className="md:col-span-2 col-span-full flex md:justify-end gap-4 mt-2 md:mt-0">
                                             <button onClick={() => handleEdit(prop)} className="flex items-center gap-1 text-blue-500 hover:text-blue-700 font-semibold text-sm">
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L16.732 3.732z" /></svg>
