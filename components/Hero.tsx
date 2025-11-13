@@ -43,7 +43,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="relative z-20 container mx-auto px-6 flex flex-col lg:flex-row justify-between items-center gap-12 lg:gap-16">
-        <div className="lg:w-1/2 text-center lg:text-left pt-28 lg:pt-0">
+        <div className="lg:w-1/2 text-center lg:text-left pt-36 lg:pt-0">
             <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
               Tu hogar ideal te espera con Grupo MR Inmobiliaria
             </h1>
