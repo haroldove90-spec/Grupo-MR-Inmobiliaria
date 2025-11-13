@@ -8,7 +8,7 @@ const InfoIcon: React.FC<{ icon: React.ReactNode; text: string }> = ({ icon, tex
     </div>
 );
 
-export const PropertyDetail: React.FC<{ property: Property, onBack: () => void }> = ({ property, onBack }) => {
+export const PropertyDetail: React.FC<{ property: Property, onBack: () => void, isAdminView?: boolean }> = ({ property, onBack, isAdminView = false }) => {
     const [mainImage, setMainImage] = useState(property.gallery?.[0] || property.imageUrl);
     const [submitted, setSubmitted] = useState(false);
 
@@ -26,8 +26,12 @@ export const PropertyDetail: React.FC<{ property: Property, onBack: () => void }
         setSubmitted(true);
     };
 
+    const sectionClasses = isAdminView
+        ? "py-12 md:py-16 bg-white text-gray-800 min-h-screen"
+        : "pt-24 pb-16 md:pt-32 md:pb-24 bg-white text-gray-800";
+
     return (
-        <section className="pt-24 pb-16 md:pt-32 md:pb-24 bg-white text-gray-800">
+        <section className={sectionClasses}>
             <div className="container mx-auto px-6">
                 <button 
                     onClick={onBack} 
@@ -36,7 +40,7 @@ export const PropertyDetail: React.FC<{ property: Property, onBack: () => void }
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 transition-transform duration-300 group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
-                    Volver a Propiedades
+                    {isAdminView ? 'Volver al Panel' : 'Volver a Propiedades'}
                 </button>
                 
                 <div className="grid lg:grid-cols-3 gap-12">

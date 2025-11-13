@@ -73,7 +73,6 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, onNavigate, isAdm
             {navItems.map(item => (
               <NavLink key={item.section} {...item} activeSection={activeSection} onNavigate={onNavigate} />
             ))}
-            {isAdmin && <NavLink section="admin" label="Panel Admin" activeSection={activeSection} onNavigate={onNavigate} />}
           </nav>
           <button 
             onClick={onToggleAdmin}
@@ -111,7 +110,6 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, onNavigate, isAdm
                     isMobile 
                 />
             ))}
-            {isAdmin && <NavLink section="admin" label="Panel Admin" activeSection={activeSection} onNavigate={(section) => { onNavigate(section); setIsMenuOpen(false); }} isMobile />}
              <div className="mt-6 border-t border-gray-700 w-full flex justify-center pt-6">
                 <button 
                   onClick={() => { onToggleAdmin(); setIsMenuOpen(false); }}

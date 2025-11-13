@@ -44,13 +44,20 @@ const App: React.FC = () => {
 
   const handleToggleAdmin = () => {
     setIsAdmin(prev => !prev);
-    navigateTo('home');
+    setActiveSection('home');
+    setSelectedPropertyId(null);
   };
 
   const handleSelectProperty = (id: number) => {
     setSelectedPropertyId(id);
-    setActiveSection('propertyDetail');
+    if (!isAdmin) {
+      setActiveSection('propertyDetail');
+    }
     window.scrollTo(0, 0);
+  };
+
+  const handleAdminBackFromDetail = () => {
+    setSelectedPropertyId(null);
   };
 
   const handleSaveProperty = (propertyData: Omit<Property, 'id'> & { id?: number }) => {
@@ -71,6 +78,31 @@ const App: React.FC = () => {
     }
   };
 
+  // Admin View
+  if (isAdmin) {
+    if (selectedPropertyId) {
+      const property = properties.find(p => p.id === selectedPropertyId);
+      if (property) {
+        return <PropertyDetail property={property} onBack={handleAdminBackFromDetail} isAdminView />;
+      }
+      // If property not found, go back to dashboard
+      handleAdminBackFromDetail(); 
+    }
+
+    return (
+      <div className="font-sans bg-gray-100">
+        <AdminDashboard 
+          properties={properties} 
+          onSave={handleSaveProperty} 
+          onDelete={handleDeleteProperty}
+          onExitAdmin={handleToggleAdmin}
+          onSelectProperty={handleSelectProperty}
+        />
+      </div>
+    );
+  }
+
+  // Client View
   const renderSection = () => {
     switch (activeSection) {
       case 'home':
@@ -94,21 +126,9 @@ const App: React.FC = () => {
       case 'propertyDetail': {
         const property = properties.find(p => p.id === selectedPropertyId);
         if (property) {
-          return <PropertyDetail property={property} onBack={() => navigateTo(isAdmin ? 'admin' : 'properties')} />;
+          return <PropertyDetail property={property} onBack={() => navigateTo('properties')} />;
         }
         return <Properties properties={properties} onSelectProperty={handleSelectProperty} />; // Fallback
-      }
-      case 'admin': {
-        if (isAdmin) {
-          return <AdminDashboard 
-                    properties={properties} 
-                    onSave={handleSaveProperty} 
-                    onDelete={handleDeleteProperty}
-                    onExitAdmin={handleToggleAdmin}
-                    onSelectProperty={handleSelectProperty}
-                 />;
-        }
-        return <Hero onNavigate={navigateTo} />; // Fallback if not admin
       }
       default:
         return <Hero onNavigate={navigateTo} />;
@@ -117,18 +137,16 @@ const App: React.FC = () => {
 
   return (
     <div className="font-sans bg-brand-dark text-brand-light">
-      {activeSection !== 'admin' && (
-        <Header 
-          activeSection={activeSection} 
-          onNavigate={navigateTo} 
-          isAdmin={isAdmin} 
-          onToggleAdmin={handleToggleAdmin}
-        />
-      )}
+      <Header 
+        activeSection={activeSection} 
+        onNavigate={navigateTo} 
+        isAdmin={isAdmin} 
+        onToggleAdmin={handleToggleAdmin}
+      />
       <main>
         {renderSection()}
       </main>
-      {activeSection !== 'admin' && <Footer onNavigate={navigateTo} />}
+      <Footer onNavigate={navigateTo} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 
-export type Section = 'home' | 'about' | 'properties' | 'contact' | 'propertyDetail' | 'admin';
+export type Section = 'home' | 'about' | 'properties' | 'contact' | 'propertyDetail';
 
 export interface Property {
   id: number;
