@@ -70,7 +70,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ properties, onSa
             <div className="container mx-auto px-6 py-12 md:py-16">
                 
                 <div className="bg-brand-dark rounded-lg shadow-xl p-6 md:p-8 mb-12 flex justify-between items-center">
-                    <h2 className="text-2xl md:text-4xl font-bold text-white">Dashboard</h2>
+                    <h2 className="text-2xl md:text-4xl font-bold text-white">Panel de Administración</h2>
                     <button
                         onClick={onExitAdmin}
                         className="bg-transparent border border-white/50 text-white font-bold py-2 px-4 rounded-md hover:bg-white/10 transition-colors duration-300 flex items-center gap-2 text-sm"

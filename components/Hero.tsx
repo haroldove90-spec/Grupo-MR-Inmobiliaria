@@ -9,22 +9,22 @@ const ContactForm: React.FC = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         // Handle form submission logic, maybe show a success message
-        alert('Thank you for your message!');
+        alert('¡Gracias por tu mensaje!');
     };
 
     return (
         <div className="bg-black/80 backdrop-blur-sm p-8 rounded-lg max-w-md w-full shadow-2xl">
-            <h2 className="text-4xl font-bold mb-2">Say hello</h2>
-            <p className="text-gray-300 mb-6">Tell us how we can guide you.</p>
+            <h2 className="text-4xl font-bold mb-2">Contáctanos</h2>
+            <p className="text-gray-300 mb-6">Dinos cómo podemos ayudarte.</p>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <input type="text" placeholder="Your name" required className="bg-gray-100 text-black placeholder-gray-500 p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-orange" />
-                    <input type="text" placeholder="Your number" required className="bg-gray-100 text-black placeholder-gray-500 p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-orange" />
+                    <input type="text" placeholder="Tu nombre" required className="bg-gray-100 text-black placeholder-gray-500 p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-orange" />
+                    <input type="text" placeholder="Tu número" required className="bg-gray-100 text-black placeholder-gray-500 p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-orange" />
                 </div>
-                <input type="email" placeholder="Your email" required className="w-full bg-gray-100 text-black placeholder-gray-500 p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-orange" />
-                <textarea placeholder="Type your message..." rows={4} required className="w-full bg-gray-100 text-black placeholder-gray-500 p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-orange"></textarea>
+                <input type="email" placeholder="Tu email" required className="w-full bg-gray-100 text-black placeholder-gray-500 p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-orange" />
+                <textarea placeholder="Escribe tu mensaje..." rows={4} required className="w-full bg-gray-100 text-black placeholder-gray-500 p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-orange"></textarea>
                 <button type="submit" className="w-full bg-brand-orange text-white font-bold py-3 px-6 text-center uppercase tracking-wider rounded-md hover:bg-orange-600 transition-colors duration-300">
-                    Send Message
+                    Enviar Mensaje
                 </button>
             </form>
         </div>
@@ -43,7 +43,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="relative z-20 container mx-auto px-6 flex flex-col lg:flex-row justify-between items-center gap-12 lg:gap-16">
-        <div className="lg:w-1/2 text-center lg:text-left pt-20 lg:pt-0">
+        <div className="lg:w-1/2 text-center lg:text-left pt-28 lg:pt-0">
             <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4">
               Tu hogar ideal te espera con Grupo MR Inmobiliaria
             </h1>
