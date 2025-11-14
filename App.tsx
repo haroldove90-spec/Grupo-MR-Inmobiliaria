@@ -15,6 +15,8 @@ import { Limpieza } from './components/Limpieza';
 import { Poliza } from './components/Poliza';
 import { BottomNav } from './components/BottomNav';
 import { AdminFAB } from './components/AdminFAB';
+import { ContactBlock } from './components/ContactBlock';
+import { WhatsAppFAB } from './components/WhatsAppFAB';
 
 
 const App: React.FC = () => {
@@ -154,9 +156,11 @@ const App: React.FC = () => {
       <main>
         {renderSection()}
       </main>
+      {activeSection !== 'contact' && <ContactBlock />}
       <Footer onNavigate={navigateTo} />
       <BottomNav activeSection={activeSection} onNavigate={navigateTo} />
       <AdminFAB isAdmin={isAdmin} onToggleAdmin={handleToggleAdmin} />
+      <WhatsAppFAB />
     </div>
   );
 };
