@@ -1,5 +1,4 @@
-
-export type Section = 'home' | 'about' | 'properties' | 'contact' | 'propertyDetail';
+export type Section = 'home' | 'about' | 'properties' | 'contact' | 'propertyDetail' | 'limpieza' | 'poliza';
 
 export interface Property {
   id: number;

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Section } from '../types';
 
@@ -37,6 +36,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <FooterLink section="home" label="Inicio" onNavigate={onNavigate} />
               <FooterLink section="about" label="Nosotros" onNavigate={onNavigate} />
               <FooterLink section="properties" label="Propiedades" onNavigate={onNavigate} />
+              <FooterLink section="limpieza" label="Limpieza" onNavigate={onNavigate} />
+              <FooterLink section="poliza" label="Póliza Jurídica" onNavigate={onNavigate} />
               <FooterLink section="contact" label="Contacto" onNavigate={onNavigate} />
             </nav>
           </div>

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Section } from '../types';
 
@@ -52,10 +51,12 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, onNavigate, isAdm
     { section: 'home', label: 'Inicio' },
     { section: 'about', label: 'Nosotros' },
     { section: 'properties', label: 'Propiedades' },
+    { section: 'limpieza', label: 'Limpieza' },
+    { section: 'poliza', label: 'Póliza Jurídica' },
     { section: 'contact', label: 'Contacto' },
   ];
 
-  const isAlwaysOpaque = ['about', 'properties', 'contact', 'propertyDetail'].includes(activeSection);
+  const isAlwaysOpaque = !['home'].includes(activeSection);
   const headerBgClass = isAlwaysOpaque || isScrolled || isMenuOpen ? 'bg-brand-dark shadow-lg' : 'bg-transparent';
 
   return (

@@ -11,6 +11,8 @@ import { Section, Property } from './types';
 import { mockProperties } from './data';
 import { ExclusiveProperties } from './components/ExclusiveProperties';
 import { MoveForward } from './components/MoveForward';
+import { Limpieza } from './components/Limpieza';
+import { Poliza } from './components/Poliza';
 
 
 const App: React.FC = () => {
@@ -121,6 +123,10 @@ const App: React.FC = () => {
         return <About />;
       case 'properties':
         return <Properties properties={properties} onSelectProperty={handleSelectProperty} />;
+      case 'limpieza':
+        return <Limpieza />;
+      case 'poliza':
+        return <Poliza />;
       case 'contact':
         return <Contact />;
       case 'propertyDetail': {
