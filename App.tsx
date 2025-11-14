@@ -13,6 +13,8 @@ import { ExclusiveProperties } from './components/ExclusiveProperties';
 import { MoveForward } from './components/MoveForward';
 import { Limpieza } from './components/Limpieza';
 import { Poliza } from './components/Poliza';
+import { BottomNav } from './components/BottomNav';
+import { AdminFAB } from './components/AdminFAB';
 
 
 const App: React.FC = () => {
@@ -142,7 +144,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="font-sans bg-brand-dark text-brand-light">
+    <div className="font-sans bg-brand-dark text-brand-light pb-16 md:pb-0">
       <Header 
         activeSection={activeSection} 
         onNavigate={navigateTo} 
@@ -153,6 +155,8 @@ const App: React.FC = () => {
         {renderSection()}
       </main>
       <Footer onNavigate={navigateTo} />
+      <BottomNav activeSection={activeSection} onNavigate={navigateTo} />
+      <AdminFAB isAdmin={isAdmin} onToggleAdmin={handleToggleAdmin} />
     </div>
   );
 };

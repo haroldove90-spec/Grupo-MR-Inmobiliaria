@@ -35,6 +35,17 @@
           -ms-overflow-style: none;  /* IE and Edge */
           scrollbar-width: none;  /* Firefox */
       }
+      @keyframes pulse-icon {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+      }
+      .animate-pulse-icon {
+        animation: pulse-icon 1.5s ease-in-out infinite;
+      }
     </style>
   <script type="importmap">
 {
