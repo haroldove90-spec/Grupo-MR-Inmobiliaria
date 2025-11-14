@@ -23,6 +23,7 @@ export const Limpieza: React.FC = () => {
         <div className="bg-white rounded-lg shadow-2xl overflow-hidden">
             <div className="grid md:grid-cols-2 items-center">
                 <div className="p-8 md:p-12">
+                    <img src="https://appdesignmex.com/mr.jpg" alt="Logo Limpieza MR" className="h-20 w-auto mb-6" />
                     <h1 className="text-4xl md:text-5xl font-bold text-blue-800 uppercase leading-tight">
                         Servicio de Limpieza
                     </h1>
